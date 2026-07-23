@@ -42,7 +42,31 @@ MUSIC
 const music=document.getElementById("bgMusic");
 const musicButton=document.getElementById("musicButton");
 
+const playlist=[
+"assets/music/SpotiDownloader.com - Kalapastangan - fitterkarma.mp3",
+"assets/music/SpotiDownloader.com - Misteryoso - Cup of Joe.mp3",
+"assets/music/SpotiDownloader.com - Paraluman - Adie.mp3",
+"assets/music/SpotiDownloader.com - You'll Be in My Heart - NIKI.mp3",
+"assets/music/SpotiDownloader.com - I Thought I Saw Your Face Today - She & Him.mp3",
+"assets/music/SpotiDownloader.com - I Think They Call This Love - Cover - Matthew Ifield.mp3",
+"assets/music/SpotiDownloader.com - I Love You Will Still Sound The Same - Oh Honey.mp3",
+"assets/music/SpotiDownloader.com - Always Looking for You - Jason Mraz.mp3"
+];
+
+let currentSong=0;
 let playing=false;
+
+function loadSong(index){
+music.src=playlist[index];
+}
+
+loadSong(0);
+
+music.addEventListener("ended",()=>{
+currentSong=(currentSong+1)%playlist.length;
+loadSong(currentSong);
+music.play();
+});
 
 musicButton.addEventListener("click",()=>{
 
